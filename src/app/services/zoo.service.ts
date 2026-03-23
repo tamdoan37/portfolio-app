@@ -6,7 +6,8 @@ import { Animal, Location, Booking, Member } from '../models/zoo.models';
 @Injectable({ providedIn: 'root' })
 export class ZooService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/api';
+  //private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'https://zoo-backend-olyp.onrender.com/api/animals';
 
   // Data Fetching -paths to match server.js routes
 getAnimals(): Observable<Animal[]> { 
