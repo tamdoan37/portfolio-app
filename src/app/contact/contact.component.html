@@ -1,0 +1,27 @@
+<section class="formCard card">
+  <h2>Contact Me</h2>
+  <p>Have questions or feedback? I’d love to hear from you.</p>
+  
+  <form [formGroup]="form" (ngSubmit)="submit()" class="mt-2">
+    <div class="field">
+      <label for="name">Your Name</label>
+      <input id="name" formControlName="name" placeholder="Tam Doan">
+    </div>
+
+    <div class="field">
+      <label for="email">Email Address</label>
+      <input id="email" type="email" formControlName="email" placeholder="example@email.com">
+    </div>
+
+    <div class="field">
+      <label for="message">Message</label>
+      <textarea id="message" formControlName="message" placeholder="Write your message here..."></textarea>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid" class="app-button">Send Message</button>
+  </form>
+
+  @if (status()) {
+    <p class="msg ok mt-2" aria-live="polite">{{ status() }}</p>
+  }
+</section>

@@ -1,0 +1,20 @@
+[
+  { 
+    "id": 1, 
+    "title": "Responsive Portfolio", 
+    "description": "Portfolio with contact form.", 
+    "technologiesUsed": ["HTML", "CSS", "JavaScript"] 
+  },
+  { 
+    "id": 2, 
+    "title": "Weather Dashboard", 
+    "description": "Current weather + 5-day forecast.", 
+    "technologiesUsed": ["JavaScript", "Fetch API", "Bootstrap"] 
+  },
+  { 
+    "id": 3, 
+    "title": "Task Tracker", 
+    "description": "CRUD tasks with localStorage.", 
+    "technologiesUsed": ["HTML", "CSS", "JavaScript"] 
+  }
+]

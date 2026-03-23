@@ -1,0 +1,39 @@
+<article class="card stack">
+    <h2>My Projects</h2>
+    <section id="projectsSection">
+        <label>
+            Filter by Tech:
+            <select (change)="onFilterChange($event)">
+                <option value="all">All</option>
+                <option value="HTML">HTML</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="CSS">CSS</option>
+            </select>
+        </label>
+
+        <div class="projects-grid mt-2">
+            @for (p of filteredProjects(); track p.id) {
+            <div class="card">
+                <h3>{{ p.title }}</h3>
+                <p>{{ p.description }}</p>
+                <div class="mt-1">
+                    @for (tag of p.technologiesUsed; track tag) {
+                    <span class="badge">{{ tag }}</span>
+                    }
+                </div>
+            </div>
+            } @empty {
+            <p>No projects match this filter.</p>
+            }
+        </div>
+    </section>
+</article>
+
+<aside class="callout card mt-3">
+    <h2>5 Essential Rules of Cooking</h2>
+    <p>1) Have a good knife</p>
+    <p>2) Use fresh ingredients</p>
+    <p>3) Cook often to build skill</p>
+    <p>4) Use recipes as guides, not strict rules</p>
+    <p>5) Develop your own style</p>
+</aside>
