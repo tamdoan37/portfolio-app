@@ -1,16 +1,17 @@
 <section class="formCard card">
   <h2>Contact Me</h2>
-  <p>Have questions or feedback? I’d love to hear from you.</p>
-  
-  <form [formGroup]="form" (ngSubmit)="submit()" class="mt-2">
+  <p>Have questions or feedback about my site? I’d love to hear from you.</p>
+
+  <form [formGroup]="contactForm" (ngSubmit)="submitContact()" class="mt-2" id="contactForm">
     <div class="field">
       <label for="name">Your Name</label>
-      <input id="name" formControlName="name" placeholder="Tam Doan">
+      <input id="name" formControlName="name" type="text" placeholder="Tam Doan" 
+             [class.error-border]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
     </div>
 
     <div class="field">
       <label for="email">Email Address</label>
-      <input id="email" type="email" formControlName="email" placeholder="example@email.com">
+      <input id="email" formControlName="email" type="email" placeholder="tddoan@students.ntc.edu">
     </div>
 
     <div class="field">
@@ -18,10 +19,55 @@
       <textarea id="message" formControlName="message" placeholder="Write your message here..."></textarea>
     </div>
 
-    <button type="submit" [disabled]="form.invalid" class="app-button">Send Message</button>
+    <input type="submit" value="Send message" [disabled]="contactForm.invalid" class="app-button">
+    
+    @if (contactStatus()) {
+      <p class="status mt-1 ok" aria-live="polite">{{ contactStatus() }}</p>
+    }
+  </form>
+</section>
+
+<article class="card stack mt-3">
+  <h2>Add a New Project</h2>
+  <p class="muted">Contribute to the project gallery by filling out the details below.</p>
+
+  <form [formGroup]="projectForm" (ngSubmit)="submitProject()" class="mt-2" id="projectForm">
+    <div class="field">
+      <label for="projTitle">Project Title</label>
+      <input id="projTitle" formControlName="projTitle" type="text" placeholder="My Awesome Project">
+    </div>
+
+    <div class="field">
+      <label for="projDesc">Project Description</label>
+      <textarea id="projDesc" formControlName="projDesc" placeholder="Brief description of the project..."></textarea>
+    </div>
+
+    <div class="field">
+      <label for="projTags">Technologies Used (comma separated)</label>
+      <input id="projTags" formControlName="projTags" type="text" placeholder="HTML, CSS, JavaScript">
+    </div>
+
+    <div class="field">
+      <label for="projLinks">Project links (comma separated URLs)</label>
+      <input id="projLinks" formControlName="projLinks" type="url" placeholder="https://github.com/me/repo">
+    </div>
+
+    <div class="field">
+      <label for="projImage">Image upload (png/jpg/webp)</label>
+      <input id="projImage" type="file" (change)="onFileChange($event)" accept="image/*">
+    </div>
+
+    <input type="submit" value="Add project" [disabled]="projectForm.invalid" class="app-button">
+    
+    @if (projectStatus()) {
+      <p class="status mt-1 ok" aria-live="polite">{{ projectStatus() }}</p>
+    }
   </form>
 
-  @if (status()) {
-    <p class="msg ok mt-2" aria-live="polite">{{ status() }}</p>
-  }
-</section>
+  <section class="mt-2">
+    <h3>Submitted Projects</h3>
+    <div id="projectList" class="projects">
+      <p class="muted">No new projects submitted in this session.</p>
+    </div>
+  </section>
+</article>

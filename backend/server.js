@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 
 // --- MIDDLEWARE ---
 
-// 1. CORS Configuration (Allows your Angular app to talk to this server)
+// CORS Configuration (Allows your Angular app to talk to this server)
 app.use(cors({
     origin: [
         'http://localhost:4200',
@@ -25,15 +25,15 @@ app.use(cors({
     credentials: true
 }));
 
-// 2. Security Headers (CSP disabled to allow local images/styles during development)
+//  Security Headers (CSP disabled to allow local images/styles during development)
 app.use(helmet({
     contentSecurityPolicy: false,
 }));
 
 app.use(express.json());
-app.use(cookieParser('your-secret-key-here'));
+app.use(cookieParser('key-here'));
 
-// 3. Request Logging (Great for debugging)
+// Request Logging (Great for debugging)
 app.use((req, res, next) => {
     console.log(`[${new Date().toLocaleTimeString()}] ${req.method} ${req.url}`);
     next();

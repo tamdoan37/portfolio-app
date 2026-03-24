@@ -5,7 +5,8 @@ import { Project, ContactResponse } from '../models/portfolio.models';
 @Injectable({ providedIn: 'root' })
 export class PortfolioService {
   private http = inject(HttpClient);
-  private API_URL = 'http://localhost:3000/api';
+  //private API_URL = 'http://localhost:3000/api';
+  private API_URL = 'https://portfolio-app-q0w1.onrender.com/api';
 
   // Signals for reactive state
   projects = signal<Project[]>([]);
