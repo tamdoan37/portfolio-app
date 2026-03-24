@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "zoo-app": {
+    "portfolio-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -23,7 +23,8 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "assets"
               }
             ],
             "styles": [
@@ -58,10 +59,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "zoo-app:build:production"
+              "buildTarget": "portfolio-app:build:production"
             },
             "development": {
-              "buildTarget": "zoo-app:build:development"
+              "buildTarget": "portfolio-app:build:development"
             }
           },
           "defaultConfiguration": "development"
