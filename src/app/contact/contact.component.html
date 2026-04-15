@@ -1,73 +1,74 @@
-<section class="formCard card">
-  <h2>Contact Me</h2>
-  <p>Have questions or feedback about my site? I’d love to hear from you.</p>
+<div style="display: flex; flex-direction: column; gap: 30px; max-width: 800px; margin: 0 auto; padding-bottom: 40px;">
+  
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Contact Me</mat-card-title>
+      <mat-card-subtitle>Have questions or feedback about my site? I’d love to hear from you.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content style="margin-top: 15px;">
+      <form [formGroup]="contactForm" (ngSubmit)="submitContact()" style="display: flex; flex-direction: column; gap: 10px;">
+        <mat-form-field appearance="outline">
+          <mat-label>Your Name</mat-label>
+          <input matInput formControlName="name" aria-label="Your Name" placeholder="Tam Doan">
+        </mat-form-field>
 
-  <form [formGroup]="contactForm" (ngSubmit)="submitContact()" class="mt-2" id="contactForm">
-    <div class="field">
-      <label for="name">Your Name</label>
-      <input id="name" formControlName="name" type="text" placeholder="Tam Doan" 
-             [class.error-border]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
-    </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Email Address</mat-label>
+          <input matInput formControlName="email" type="email" aria-label="Email Address" placeholder="tddoan@students.ntc.edu">
+        </mat-form-field>
 
-    <div class="field">
-      <label for="email">Email Address</label>
-      <input id="email" formControlName="email" type="email" placeholder="tddoan@students.ntc.edu">
-    </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Message</mat-label>
+          <textarea matInput formControlName="message" rows="4" aria-label="Message" placeholder="Write your message here..."></textarea>
+        </mat-form-field>
 
-    <div class="field">
-      <label for="message">Message</label>
-      <textarea id="message" formControlName="message" placeholder="Write your message here..."></textarea>
-    </div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid" style="padding: 24px; font-weight: 600;">
+          Send message
+        </button>
+        
+        @if (contactStatus$ | async; as status) {
+          <p style="color: green; margin-top: 10px; font-weight: 500;">{{ status }}</p>
+        }
+      </form>
+    </mat-card-content>
+  </mat-card>
 
-    <input type="submit" value="Send message" [disabled]="contactForm.invalid" class="app-button">
-    
-    @if (contactStatus()) {
-      <p class="status mt-1 ok" aria-live="polite">{{ contactStatus() }}</p>
-    }
-  </form>
-</section>
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Add a New Project</mat-card-title>
+      <mat-card-subtitle>Provide the details below to simulate adding a project to the gallery.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content style="margin-top: 15px;">
+      <form [formGroup]="projectForm" (ngSubmit)="submitProject()" style="display: flex; flex-direction: column; gap: 10px;">
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Project Title</mat-label>
+          <input matInput formControlName="projTitle" aria-label="Project Title" placeholder="My Awesome Project">
+        </mat-form-field>
 
-<article class="card stack mt-3">
-  <h2>Add a New Project</h2>
-  <p class="muted">Contribute to the project gallery by filling out the details below.</p>
+        <mat-form-field appearance="outline">
+          <mat-label>Project Description</mat-label>
+          <textarea matInput formControlName="projDesc" rows="3" aria-label="Project Description" placeholder="Brief description..."></textarea>
+        </mat-form-field>
 
-  <form [formGroup]="projectForm" (ngSubmit)="submitProject()" class="mt-2" id="projectForm">
-    <div class="field">
-      <label for="projTitle">Project Title</label>
-      <input id="projTitle" formControlName="projTitle" type="text" placeholder="My Awesome Project">
-    </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Technologies Used (comma separated)</mat-label>
+          <input matInput formControlName="projTags" aria-label="Technologies" placeholder="HTML, CSS, JavaScript">
+        </mat-form-field>
 
-    <div class="field">
-      <label for="projDesc">Project Description</label>
-      <textarea id="projDesc" formControlName="projDesc" placeholder="Brief description of the project..."></textarea>
-    </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Project Links (URLs)</mat-label>
+          <input matInput formControlName="projLinks" aria-label="Project Links" placeholder="https://github.com/...">
+        </mat-form-field>
+        <button mat-raised-button color="accent" type="submit" [disabled]="projectForm.invalid" style="padding: 24px; font-weight: 600;">
+          Add project
+        </button>
+        
+        @if (projectStatus$ | async; as status) {
+          <p style="color: green; margin-top: 10px; font-weight: 500;">{{ status }}</p>
+        }
+      </form>
+    </mat-card-content>
+  </mat-card>
 
-    <div class="field">
-      <label for="projTags">Technologies Used (comma separated)</label>
-      <input id="projTags" formControlName="projTags" type="text" placeholder="HTML, CSS, JavaScript">
-    </div>
-
-    <div class="field">
-      <label for="projLinks">Project links (comma separated URLs)</label>
-      <input id="projLinks" formControlName="projLinks" type="url" placeholder="https://github.com/me/repo">
-    </div>
-
-    <div class="field">
-      <label for="projImage">Image upload (png/jpg/webp)</label>
-      <input id="projImage" type="file" (change)="onFileChange($event)" accept="image/*">
-    </div>
-
-    <input type="submit" value="Add project" [disabled]="projectForm.invalid" class="app-button">
-    
-    @if (projectStatus()) {
-      <p class="status mt-1 ok" aria-live="polite">{{ projectStatus() }}</p>
-    }
-  </form>
-
-  <section class="mt-2">
-    <h3>Submitted Projects</h3>
-    <div id="projectList" class="projects">
-      <p class="muted">No new projects submitted in this session.</p>
-    </div>
-  </section>
-</article>
+</div>

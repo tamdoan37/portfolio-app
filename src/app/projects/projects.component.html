@@ -1,39 +1,51 @@
-<article class="card stack">
-    <h2>My Projects</h2>
-    <section id="projectsSection">
-        <label>
-            Filter by Tech:
-            <select (change)="onFilterChange($event)">
-                <option value="all">All</option>
-                <option value="HTML">HTML</option>
-                <option value="JavaScript">JavaScript</option>
-                <option value="CSS">CSS</option>
-            </select>
-        </label>
+<mat-card style="margin-bottom: 30px;">
+    <mat-card-header>
+        <mat-card-title>My Projects</mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="margin-top: 15px;">
+        <mat-form-field appearance="outline">
+            <mat-label>Filter by Tech</mat-label>
+            <mat-select (selectionChange)="onFilterChange($event.value)" [value]="'all'">
+                <mat-option value="all">All</mat-option>
+                <mat-option value="HTML">HTML</mat-option>
+                <mat-option value="JavaScript">JavaScript</mat-option>
+                <mat-option value="CSS">CSS</mat-option>
+            </mat-select>
+        </mat-form-field>
 
-        <div class="projects-grid mt-2">
-            @for (p of filteredProjects(); track p.id) {
-            <div class="card">
-                <h3>{{ p.title }}</h3>
-                <p>{{ p.description }}</p>
-                <div class="mt-1">
-                    @for (tag of p.technologiesUsed; track tag) {
-                    <span class="badge">{{ tag }}</span>
-                    }
-                </div>
-            </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 15px;">
+            @for (p of filteredProjects$ | async; track p.id) {
+                <mat-card style="background-color: #fafafa; border: 1px solid #e5e7eb;">
+                    <mat-card-header>
+                        <mat-card-title style="font-size: 1.2rem;">{{ p.title }}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content style="margin-top: 10px;">
+                        <p>{{ p.description }}</p>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 15px;">
+                            @for (tag of p.technologiesUsed; track tag) {
+                                <span style="background: #e0e7ff; color: #3730a3; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 500;">
+                                    {{ tag }}
+                                </span>
+                            }
+                        </div>
+                    </mat-card-content>
+                </mat-card>
             } @empty {
-            <p>No projects match this filter.</p>
+                <p style="padding: 20px;">No projects match this filter.</p>
             }
         </div>
-    </section>
-</article>
+    </mat-card-content>
+</mat-card>
 
-<aside class="callout card mt-3">
-    <h2>5 Essential Rules of Cooking</h2>
-    <p>1) Have a good knife</p>
-    <p>2) Use fresh ingredients</p>
-    <p>3) Cook often to build skill</p>
-    <p>4) Use recipes as guides, not strict rules</p>
-    <p>5) Develop your own style</p>
-</aside>
+<mat-card style="background-color: #fffbeb; border-left: 5px solid #fbbf24;">
+    <mat-card-header>
+        <mat-card-title>5 Essential Rules of Cooking</mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="margin-top: 10px; font-weight: 500;">
+        <p>1) Have a good knife</p>
+        <p>2) Use fresh ingredients</p>
+        <p>3) Cook often to build skill</p>
+        <p>4) Use recipes as guides, not strict rules</p>
+        <p>5) Develop your own style</p>
+    </mat-card-content>
+</mat-card>

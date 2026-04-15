@@ -1,30 +1,37 @@
-import { Component, OnInit, signal, computed, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule, AsyncPipe } from '@angular/common';
 import { PortfolioService } from '../services/portfolio.service';
+import { BehaviorSubject, combineLatest, map } from 'rxjs';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AsyncPipe, MatCardModule, MatFormFieldModule, MatSelectModule],
   templateUrl: './projects.component.html'
 })
 export class ProjectsComponent implements OnInit {
   private service = inject(PortfolioService);
-  activeFilter = signal('all');
+  activeFilter$ = new BehaviorSubject<string>('all');
 
-  // Automatically recalculates when projects() or activeFilter() changes
-  filteredProjects = computed(() => {
-    const allProjects = this.service.projects();
-    if (this.activeFilter() === 'all') return allProjects;
-    return allProjects.filter(p => p.technologiesUsed.includes(this.activeFilter()));
-  });
+  // filter the pojects based on the active filter
+  filteredProjects$ = combineLatest([
+    this.service.projects$,
+    this.activeFilter$
+  ]).pipe(
+    map(([projects, filter]) => {
+      if (filter === 'all') return projects;
+      return projects.filter(p => p.technologiesUsed.includes(filter));
+    })
+  );
 
   ngOnInit() {
     this.service.loadProjects();
   }
 
-  onFilterChange(event: Event) {
-    const value = (event.target as HTMLSelectElement).value;
-    this.activeFilter.set(value);
+  onFilterChange(value: string) {
+    this.activeFilter$.next(value);
   }
 }

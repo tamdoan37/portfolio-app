@@ -1,4 +1,4 @@
-
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 /* CSS Reset (lightweight) */
 * {
   box-sizing: border-box;

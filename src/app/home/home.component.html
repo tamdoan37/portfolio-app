@@ -1,69 +1,90 @@
-<article class="card stack">
-  <h2>Something About Me</h2>
-  <p><strong>Hi!</strong> My name is Tam Doan and I am from Phoenix, Arizona. I moved to Wisconsin about 4 months ago with my family. It’s really hot in Arizona, and here in Wisconsin the weather is nice so far—hopefully I’ll like the cold! 😄</p>
-  <p class="mt-1">I’m a freshman at North Central Technical College majoring in Software Development. I enjoy university–community engagement that helps both individual and collective growth.</p>
+<div style="display: flex; flex-direction: column; gap: 24px; max-width: 1080px; margin: 0 auto;">
+  
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Something About Me</mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="margin-top: 16px;">
+      <p><strong>Hi!</strong> My name is Tam Doan and I am from Phoenix, Arizona. I moved to Wisconsin about 4 months ago with my family. It’s really hot in Arizona, and here in Wisconsin the weather is nice so far—hopefully I’ll like the cold! 😄</p>
+      <p style="margin-top: 12px;">I’m a freshman at North Central Technical College majoring in Software Development. I enjoy university–community engagement that helps both individual and collective growth.</p>
 
-  <div class="grid two mt-2">
-    <div class="card">
-      <h3 class="mb-1">Connect</h3>
-      <p><a href="https://www.linkedin.com/in/tam-doan-a386167b/" target="_blank">LinkedIn Profile</a></p>
-      <p class="mt-1"><a href="mailto:tddoan@students.ntc.edu">tddoan@students.ntc.edu</a></p>
-    </div>
-    <div class="card">
-      <h3 class="mb-1">Fun Facts</h3>
-      <ul>
-        <li>Big Seahawks fan</li>
-        <li>Enjoy cooking, music, and traveling</li>
-        <li>Won a League of Legends tournament in college</li>
-      </ul>
-    </div>
-  </div>
-</article>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 24px;">
+        <mat-card style="background: #f8fafc; border: 1px solid #e2e8f0; box-shadow: none;">
+          <mat-card-content>
+            <h3 style="margin-bottom: 8px; color: #3f51b5;">Connect</h3>
+            <p><a href="https://www.linkedin.com/in/tam-doan-a386167b/" target="_blank" style="text-decoration: none; color: #1e293b; font-weight: 500;">🔗 LinkedIn Profile</a></p>
+            <p style="margin-top: 8px;"><a href="mailto:tddoan@students.ntc.edu" style="text-decoration: none; color: #1e293b; font-weight: 500;">✉️ tddoan&#64;students.ntc.edu</a></p>
+          </mat-card-content>
+        </mat-card>
 
-<aside class="callout card">
-  <h2>Quotes I Like</h2>
-  <p class="asideText">“The computer was born to solve problems that did not exist before.” — Bill Gates</p>
-  <p class="asideText">“Simplicity, carried to the extreme, becomes elegance.” — Jon Franklin</p>
-  <p class="asideText">“Real cooking is more about following your heart than following recipes.” — Unknown</p>
-</aside>
+        <mat-card style="background: #f8fafc; border: 1px solid #e2e8f0; box-shadow: none;">
+          <mat-card-content>
+            <h3 style="margin-bottom: 8px; color: #3f51b5;">Fun Facts</h3>
+            <ul style="padding-left: 20px; line-height: 1.6;">
+              <li>Big Seahawks fan</li>
+              <li>Enjoy cooking, music, and traveling</li>
+              <li>Won a League of Legends tournament in college</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
-<section class="card stack">
-  <h2>I Enjoy Traveling During the Summer</h2>
-  <table class="mt-1" aria-describedby="places-caption">
-    <caption id="places-caption" class="muted mb-1">Famous places I’ve visited</caption>
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">State</th>
-        <th scope="col">What I love</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Grand Canyon</td>
-        <td>Arizona</td>
-        <td>Hidden caves and stunning arid-land formations.</td>
-      </tr>
-      <tr>
-        <td>Havasu Falls</td>
-        <td>Arizona</td>
-        <td>Blue-green water with breathtaking scenery.</td>
-      </tr>
-      <tr>
-        <td>Olbrich Botanical Gardens</td>
-        <td>Wisconsin</td>
-        <td>Beautiful gardens and peaceful outdoor environment.</td>
-      </tr>
-      <tr>
-        <td>Cave of the Mounds</td>
-        <td>Wisconsin</td>
-        <td>Exceptional cave showcasing an underground wonderland.</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="3">Total places listed: 4</td>
-      </tr>
-    </tfoot>
-  </table>
-</section>
+  <mat-card style="background-color: #f0f7ff; border: 1px solid #d6e6ff;">
+    <mat-card-header>
+      <mat-card-title>Quotes I Like</mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="margin-top: 12px; font-style: italic;">
+      <p>“The computer was born to solve problems that did not exist before.” — Bill Gates</p>
+      <p style="margin-top: 8px;">“Simplicity, carried to the extreme, becomes elegance.” — Jon Franklin</p>
+      <p style="margin-top: 8px;">“Real cooking is more about following your heart than following recipes.” — Unknown</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>I Enjoy Traveling During the Summer</mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="margin-top: 16px; overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left;">
+        <caption style="text-align: left; margin-bottom: 8px; color: #64748b;">Famous places I’ve visited</caption>
+        <thead>
+          <tr style="border-bottom: 2px solid #3f51b5;">
+            <th style="padding: 12px 8px;">Name</th>
+            <th style="padding: 12px 8px;">State</th>
+            <th style="padding: 12px 8px;">What I love</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid #f1f5f9;">
+            <td style="padding: 12px 8px;">Grand Canyon</td>
+            <td style="padding: 12px 8px;">Arizona</td>
+            <td style="padding: 12px 8px;">Hidden caves and stunning arid-land formations.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f1f5f9;">
+            <td style="padding: 12px 8px;">Havasu Falls</td>
+            <td style="padding: 12px 8px;">Arizona</td>
+            <td style="padding: 12px 8px;">Blue-green water with breathtaking scenery.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f1f5f9;">
+            <td style="padding: 12px 8px;">Olbrich Botanical Gardens</td>
+            <td style="padding: 12px 8px;">Wisconsin</td>
+            <td style="padding: 12px 8px;">Beautiful gardens and peaceful outdoor environment.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f1f5f9;">
+            <td style="padding: 12px 8px;">Cave of the Mounds</td>
+            <td style="padding: 12px 8px;">Wisconsin</td>
+            <td style="padding: 12px 8px;">Exceptional cave showcasing an underground wonderland.</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" style="padding: 12px 8px; font-weight: 600;">Total places listed: 4</td>
+          </tr>
+        </tfoot>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+</div>
